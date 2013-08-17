@@ -23,7 +23,7 @@
     git clone git://github.com/ansible/ansible.git &&
     cd ansible &&
     make install
-    chdir=/var/cache/ansible creates=/usr/bin/ansible
+    chdir={{ ansible_cache_dir }} creates=/usr/bin/ansible
   when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
   tags: ansible
 
@@ -33,6 +33,6 @@
     cd ansible &&
     sed -i 's/^PYTHON=.*/PYTHON=python26/' Makefile  &&
     make install
-    chdir=/var/cache/ansible creates=/usr/bin/ansible
+    chdir={{ ansible_cache_dir }} creates=/usr/bin/ansible
   when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
   tags: ansible
