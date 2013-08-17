@@ -2,8 +2,6 @@
 # The variables file used by the playbooks in the zabbix-servers group.
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
-mysqlservice: mysqld
-mysql_port: 3306
-dbuser: root
-dbname: foodb
-upassword: abc
+dbroot: root
+dbpass: hoge
+zabbix_db_pass: zabbix

@@ -1,9 +1,9 @@
----
-# Handler to handle common notifications. Handlers are called by other plays.
-# See http://ansible.cc/docs/playbooks.html for more information about handlers.
+- name: import epel key
+  command: /bin/rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL
+  tags: epel
 
-- name: restart ntp
-  service: name=ntpd state=restarted
+- name: restart sshd
+  service: name=sshd state=restarted
+  tags: sshd
 
-- name: restart iptables
-  service: name=iptables state=restarted
+- include: etckeeper.yml

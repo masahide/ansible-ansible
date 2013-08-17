@@ -1,8 +1,7 @@
 [zabbix-servers]
-zabbix-server
+localhost  ansible_connection=local 
 
 [zabbix-clients]
-web1
-web2
+localhost  ansible_connection=local 
 
 
