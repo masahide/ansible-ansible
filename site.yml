@@ -3,21 +3,21 @@
 
 - name: apply common configuration to all nodes
   hosts: all
-  user: root
+  sudo: yes
 
   roles:
     - common
 
-- name: configure and deploy the webservers and application code
-  hosts: webservers
-  user: root
+- name: configure and deploy the zabbix-server 
+  hosts: zabbix-servers
+  sudo: yes
 
   roles:
-    - web
+    - server
 
-- name: deploy MySQL and configure the databases
-  hosts: dbservers
-  user: root
+- name: deploy zabbix-client
+  hosts: zabbix-clients
+  sudo: yes
 
   roles:
-    - db
+    - client

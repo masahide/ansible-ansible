@@ -1,7 +1,8 @@
-[webservers]
-web3
+[zabbix-servers]
+zabbix-server
 
-[dbservers]
+[zabbix-clients]
+web1
 web2
 
 
