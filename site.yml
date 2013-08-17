@@ -9,7 +9,7 @@
     - common
 
 - name: configure and deploy the zabbix-server 
-  hosts: zabbix-servers
+  hosts: zabbix-server
   sudo: yes
 
   roles:

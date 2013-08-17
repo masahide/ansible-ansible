@@ -1,4 +1,4 @@
-[zabbix-servers]
+[zabbix-server]
 localhost  ansible_connection=local 
 
 [zabbix-clients]
