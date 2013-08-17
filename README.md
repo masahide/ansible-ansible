@@ -1,5 +1,5 @@
-Building a zabbix-server and zabbix-client using Ansible Playbooks.
--------------------------------------------------------------------
+Building a zabbix-server and zabbix-agent using Ansible Playbooks.
+------------------------------------------------------------------
 
 These playbooks require Ansible 1.2.
 
@@ -14,7 +14,7 @@ This zabbix-server can be on a single node. The inventory file
         [zabbix-server]
         localhost
 
-        [zabbix-clients]
+        [zabbix-agents]
         bensible
 ```
 

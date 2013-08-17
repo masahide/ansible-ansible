@@ -15,9 +15,9 @@
   roles:
     - server
 
-- name: deploy zabbix-client
-  hosts: zabbix-clients
+- name: deploy zabbix-agent
+  hosts: zabbix-agents
   sudo: yes
 
   roles:
-    - client
+    - agents

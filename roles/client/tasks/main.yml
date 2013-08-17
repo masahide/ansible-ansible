@@ -1,9 +1,0 @@
-
-- name: install zabbix-client
-  yum: name={{item}} enablerepo=epel state=installed
-  with_items:
-    - zabbix20-client
-  tags: zabbix-client
-
-- name: start zabbix-clinet 
-  service: name=zabbix-clinet state=started enabled=yes

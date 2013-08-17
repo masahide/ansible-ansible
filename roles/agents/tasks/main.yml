@@ -1,0 +1,9 @@
+
+- name: install zabbix-agent
+  yum: name={{item}} enablerepo=epel state=installed
+  with_items:
+    - zabbix20-agent
+  tags: zabbix-agent
+
+- name: start zabbix-agent 
+  service: name=zabbix-agent state=started enabled=yes
