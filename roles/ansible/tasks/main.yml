@@ -1,0 +1,38 @@
+
+- name: install python (CentOS 6)
+  yum: name={{item}} enablerepo=epel state=installed
+  with_items:
+    - PyYAML
+    - python-paramiko
+    - python-jinja2
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  tags: python
+
+- name: install python26 (CentOS 5)
+  yum: name={{item}} enablerepo=epel state=installed
+  with_items:
+    - python26
+    - python26-PyYAML
+    - python26-paramiko
+    - python26-jinja2
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
+  tags: python
+    
+- name: install ansible (CentOS 6)
+  shell: |
+    git clone git://github.com/ansible/ansible.git &&
+    cd ansible &&
+    make install
+    chdir=/var/cache/ansible creates=/usr/bin/ansible
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  tags: ansible
+
+- name: install ansible (CentOS 5)
+  shell: |
+    git clone git://github.com/ansible/ansible.git &&
+    cd ansible &&
+    sed -i 's/^PYTHON=.*/PYTHON=python26/' Makefile  &&
+    make install
+    chdir=/var/cache/ansible creates=/usr/bin/ansible
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
+  tags: ansible
