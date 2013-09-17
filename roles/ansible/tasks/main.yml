@@ -18,21 +18,23 @@
   when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
   tags: python
     
+- name: git clone ansible 
+  git: repo=git://github.com/ansible/ansible.git
+       dest={{ ansible_cache_dir }}
+       version=v1.3.1
+       register: git_result
+
 - name: install ansible (CentOS 6)
   shell: |
-    git clone git://github.com/ansible/ansible.git &&
-    cd ansible &&
     make install
-    chdir={{ ansible_cache_dir }} creates=/usr/bin/ansible
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+    chdir={{ ansible_cache_dir }}/ansible creates=/usr/bin/ansible
+  when: git_result.changed and ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
   tags: ansible
 
 - name: install ansible (CentOS 5)
   shell: |
-    git clone git://github.com/ansible/ansible.git &&
-    cd ansible &&
     sed -i 's/^PYTHON=.*/PYTHON=python26/' Makefile  &&
     make install
-    chdir={{ ansible_cache_dir }} creates=/usr/bin/ansible
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
+    chdir={{ ansible_cache_dir }}/ansible creates=/usr/bin/ansible
+  when: git_result.changed and ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
   tags: ansible
