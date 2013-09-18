@@ -20,9 +20,9 @@
     
 - name: git clone ansible 
   git: repo=git://github.com/ansible/ansible.git
-       dest={{ ansible_cache_dir }}
+       dest={{ ansible_cache_dir }}/ansible
        version=v1.3.1
-       register: git_result
+  register: git_result
 
 - name: install ansible (CentOS 6)
   shell: |
