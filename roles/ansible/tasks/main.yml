@@ -1,4 +1,3 @@
-
 - name: install python (CentOS 6)
   yum: name={{item}} enablerepo=epel state=installed
   with_items:
@@ -21,7 +20,7 @@
 - name: git clone ansible 
   git: repo=git://github.com/ansible/ansible.git
        dest={{ ansible_cache_dir }}/ansible
-       version=v1.3.1
+       version={{ ansible_version }}
   register: git_result
 
 - name: install ansible (CentOS 6)
