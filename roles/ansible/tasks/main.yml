@@ -33,7 +33,8 @@
 - name: install ansible (CentOS 5)
   shell: |
     sed -i 's/^PYTHON=.*/PYTHON=python26/' Makefile  &&
-    make install
+    make install &&
+    git checkout Makefile 
     chdir={{ ansible_cache_dir }}/ansible creates=/usr/bin/ansible
   when: git_result.changed and ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 5
   tags: ansible
