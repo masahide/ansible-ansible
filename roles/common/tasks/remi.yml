@@ -1,7 +1,7 @@
 
 - name: get remi-repo rpm RHEL6
   get_url: dest={{ ansible_cache_dir }}/remi-release.rpm url=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int >= 6
   tags: remi
 
 

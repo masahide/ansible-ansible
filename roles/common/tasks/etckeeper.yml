@@ -1,7 +1,7 @@
 
 - name: install etckeeper RHEL6
   yum: name=etckeeper enablerepo=epel state=present
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int >= 6
   tags:
     - packages
     - etckeeper

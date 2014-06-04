@@ -5,7 +5,7 @@
     - PyYAML
     - python-paramiko
     - python-jinja2
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int >= 6
   tags: python
 
 - name: install python26 (CentOS 5)
@@ -24,7 +24,7 @@
     cd ansible &&
     make install
     chdir=/var/cache/ansible creates=/usr/bin/ansible
-  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int == 6
+  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0]|int >= 6
   tags: ansible
 
 - name: install ansible (CentOS 5)
