@@ -8,16 +8,10 @@
   roles:
     - common
 
-- name: configure and deploy the zabbix-server 
-  hosts: zabbix-server
+- name: configure and deploy the ansible-servers
+  hosts: ansible-servers
   sudo: yes
 
   roles:
-    - server
+    - ansible
 
-- name: deploy zabbix-agent
-  hosts: zabbix-agents
-  sudo: yes
-
-  roles:
-    - agents
